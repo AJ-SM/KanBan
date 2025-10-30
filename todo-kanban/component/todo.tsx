@@ -1,10 +1,14 @@
 "use client"
 
 import {motion} from "motion/react"
+import { id } from "zod/locales";
 
-interface TodoProp {
+
+
+ export interface TodoProp {
     text:string;
     type?: 'backlog' | 'todo' | 'inprogress' | 'completed';
+    id?:number;
 }
 
 
@@ -17,8 +21,7 @@ export function Todo(props:TodoProp){
         drag
         whileHover={{ scale: 1.1 }}
         transition={{duration:0.3}}
-     
-
+        id={id}
         className="flex items-center hover:cursor-grab active:cursor-grabbing gap-1 mt-3 p-4 bg-slate-700 rounded-xl ">
             {type== 'backlog' ? <div className="w-3 h-3 rounded-full bg-slate-500"></div> : <div></div>}
             {type== 'todo' ? <div className="w-3 h-3 rounded-full bg-red-500"></div> : <div></div>}
